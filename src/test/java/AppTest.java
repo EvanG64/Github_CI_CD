@@ -7,6 +7,6 @@ public class AppTest {
     void testAdd() {
         App app = new App();
         // Change this '5' to '100' during the demo to show it failing!
-        assertEquals(100, app.add(2, 3));
+        assertEquals(5, app.add(2, 3));
     }
 }
