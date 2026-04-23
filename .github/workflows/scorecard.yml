@@ -1,0 +1,25 @@
+name: Scorecard supply-chain security
+on:
+  push:
+    branches: ["master"] # Matches your screenshot branch
+
+# Ensure Scorecard itself has minimal permissions
+permissions: read-all
+
+jobs:
+  analysis:
+    name: Scorecard analysis
+    runs-on: ubuntu-latest
+    permissions:
+      security-events: write # Required to upload results to Security tab
+      id-token: write        # Required for Sigstore signing
+      contents: read
+    steps:
+      - name: "Checkout code"
+        uses: actions/checkout@v4
+      - name: "Run analysis"
+        uses: ossf/scorecard-action@v2.3.1
+        with:
+          results_file: results.sarif
+          results_format: sarif
+          publish_results: true
