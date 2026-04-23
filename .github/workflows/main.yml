@@ -1,16 +1,14 @@
-name: Java CI with Maven
+name: CI/CD Testing
 
-on:
-  push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
-# Set permissions to 'read-all' to follow OpenSSF Best Practices 
-# and resolve the High-severity Token-Permissions issue.
-permissions: read-all
+on: [push, pull_request]
+
+# This block addresses the Token-Permissions High-severity issue
+permissions:
+  contents: read
 
 jobs:
   build:
+    # ... rest of your workflow
     runs-on: ubuntu-latest
 
     steps:
